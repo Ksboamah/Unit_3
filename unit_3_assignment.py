@@ -1,28 +1,59 @@
 import turtle
 
+t = turtle.Pen()
+
+
 def legnth_of_hexagon_side():
-    side = input("What is the length of the hexagons side")
+    side = int(input("What is the length of the hexagons side?"))
     return side
 
+
 def color_of_flowers_petals():
-    input("What color do you want your flowers petals to be?")
+    return input("What color do you want your flowers petals to be?")
 
 
 def color_of_flowers_center():
-    input("What color do you want your flowers center to be?")
+    return input("What color do you want your flowers center to be?")
 
 
-def hexagon():
+def hexagon1(side):
     for x in range(6):
-        turtle.forward(side)
-        turtle.left(60)
+        t.forward(side)
+        t.left(60)
 
 
-def makeflower():
-    turtle.color()
-    turtle.begin_fill()
-    hexagon()
-    turtle.end_fill()
+def hexagon2(side):
+    for x in range(6):
+        t.forward(side)
+        t.right(60)
 
 
-turtle.exitonclick()
+def make_flower_center(side, color_c):
+    t.color(color_c)
+    t.begin_fill()
+    hexagon1(side)
+    t.end_fill()
+
+
+def make_flower_petals(side, color_p):
+    t.color(color_p)
+    t.begin_fill()
+    hexagon2(side)
+    t.end_fill()
+
+
+def main():
+    side = legnth_of_hexagon_side()
+    color_c = color_of_flowers_center()
+    color_p = color_of_flowers_petals()
+    make_flower_center(side, color_c)
+    for x in range(6):
+        t.forward(side)
+        t.left(60)
+        make_flower_petals(side, color_p)
+
+
+main()
+
+
+t.exitonclick()
